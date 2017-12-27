@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>prototypal inheritance with constructor functions</title>
+  </head>
+  <body>
+    <h2>Example from pluralsight tutorial. Look at console.logs</h2>
+    <script type="text/javascript">
+      function Animal(voice){
+        this.voice = voice||'grunt'
+      }
+      Animal.prototype.speak = function(){
+        console.log(this.voice)
+      }
+
+      function Feline (name, color){
+        Animal.call(this, 'meow')
+        this.name = name
+        this.color = color
+      }
+
+      Feline.prototype = Object.create(Animal.prototype)
+      Feline.prototype.constructor = Feline
+
+      var pierre = new Feline('Pierre', 'tabby')
+
+      pierre.speak()
+
+      function Cow(name, color){
+        Animal.call(this, "moooo")
+        this.name = name
+        this.color = color
+      }
+
+      Cow.prototype = Object.create(Animal.prototype)
+      Cow.prototype.constructor = Cow
+
+      var elsie = new Cow("Elsie", 'brown')
+
+      elsie.speak()
+
+      console.log ("the cow says " + elsie.voice + " and the cat says " + pierre.voice)
+
+      console.log(elsie.constructor)
+
+
+
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>prototypal inheritance example with classes</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+      class Animal{
+        constructor(voice){
+          this.voice = voice||'grunt'
+        }
+        speak(){
+          console.log(this.voice)
+        }
+      }
+
+      class Cat extends Animal {
+        constructor (name, color){
+          super('Meow')
+          this.name = name
+          this.color = color
+        }
+      }
+
+      var pierre = new Cat('Pierre', 'tabby')
+
+      pierre.speak()
+      console.log(Animal.speak)
+      console.log(pierre.constructor)
+      console.log(Animal.constructor);
+      console.log(Cat.constructor);
+
+
+    </script>
+
+  </body>
+</html>
