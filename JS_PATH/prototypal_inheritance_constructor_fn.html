@@ -15,7 +15,7 @@
       }
 
       function Feline (name, color){
-        //3. Now you need to call the Animal constructor function and supply with meow argument in voice parameter. the this keyword refers to the invoking context which is var pierre ??? double check... 
+        //3. Now you need to call the Animal constructor function and supply with meow argument in voice parameter. the this keyword refers to the invoking context which is var pierre ??? double check...
         Animal.call(this, 'meow')
         this.name = name
         this.color = color
@@ -45,6 +45,7 @@
       console.log ("the cow says " + elsie.voice + " and the cat says " + pierre.voice)
 
       console.log(elsie.constructor)
+      console.log(elsie.__proto__.constructor);
 
 
 

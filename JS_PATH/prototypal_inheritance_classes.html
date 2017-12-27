@@ -26,14 +26,25 @@
       }
 
       var pierre = new Cat('Pierre', 'tabby')
-
+      console.log('Invoked pierre.speak()');
       pierre.speak()
-      console.log(Animal.speak)
-      console.log(pierre.constructor)
-      console.log(pierre.__proto__)
-      console.log(pierre.__proto__.__proto__)
+
+      console.log('Logged pierre.constructor:');
+      console.log(pierre.constructor);
+      console.log('Logged pierre.__proto__.constructor:');
+      console.log(pierre.__proto__.constructor);
+      console.log('Logged pierre.prototype:');
+      //this is undefined. .prototype is for functions not objects
+      console.log(pierre.prototype);
+
+      // console.log('-Log pierre.__proto__ and pierre.__proto__.__proto__ :')
+      // console.log(pierre.__proto__)
+      // console.log(pierre.__proto__.__proto__)
+      console.log('Animal.constructor:');
       console.log(Animal.constructor);
+      console.log("Animal.prototype.constructor:");
       console.log(Animal.prototype.constructor)
+      console.log("Cat.constructor:");
       console.log(Cat.constructor);
 
 
