@@ -15,12 +15,14 @@
       }
 
       function Feline (name, color){
+        //3. Now you need to call the Animal constructor function and supply with meow argument in voice parameter. the this keyword refers to the invoking context which is pierre ??? 
         Animal.call(this, 'meow')
         this.name = name
         this.color = color
       }
-
+      //1.use Object.create because you don't want to call the Animal constructor fn right away.
       Feline.prototype = Object.create(Animal.prototype)
+      //2. after setting Feline.prototype to Animal.prototype need to set the Feline.prototype.constructor back to Feline
       Feline.prototype.constructor = Feline
 
       var pierre = new Feline('Pierre', 'tabby')
