@@ -7,9 +7,12 @@
   <body>
     <h2>Example from pluralsight tutorial. Look at console.logs</h2>
     <script type="text/javascript">
+
+
       function Animal(voice){
         this.voice = voice||'grunt'
       }
+
       Animal.prototype.speak = function(){
         console.log(this.voice)
       }
@@ -20,6 +23,8 @@
         this.name = name
         this.color = color
       }
+
+
       //1.use Object.create because you don't want to call the Animal constructor fn right away.
       Feline.prototype = Object.create(Animal.prototype)
       //2. after setting Feline.prototype to Animal.prototype need to set the Feline.prototype.constructor back to Feline

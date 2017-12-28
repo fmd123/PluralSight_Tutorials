@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>demoing objects</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    //other ways to create an object
+    //besides constructor functions.
+
+    var task = {
+      title: "Title",
+      description: "description",
+      toString: function() {
+        return this.title + " and " + this.description;
+      }
+    }
+
+    var task2 = Object.create(Object.prototype)
+
+
+    task2.title = 'my Title';
+    task2.descrip = "my description";
+    task2.toString = function() {
+      console.log(this.title + ' ' + this.descrip);
+    }
+
+    var task3 = {
+      title: "Title 3",
+      description: "description",
+    }
+
+    Object.defineProperty(task3, 'toString', {
+      value: function() {
+        console.log(this.title + " and " + this.description);
+      },
+      writable: false,
+      //do this so you can't overwrite the function and break everything. Title and description can still be changed.
+      enumerable: false,
+      //if set this to enumerable then toString property will be skipped when looping over keys or doing Object.keys(task3)
+      configurable: true
+    })
+
+    task2.toString()
+    task3.toString()
+    task3.toString = " can't make me break."
+    task3.title = "hey there"
+    task3.description = "this is an object!"
+    task3.toString()
+    console.log(Object.keys(task))
+    console.log(Object.keys(task3));
+    //will only get title and description
+    Object.defineProperty(task3, 'toString', {
+      enumerable: true
+    })
+    //can't change enumerable.
+    Object.defineProperty(task3, 'toString', {
+      configurable: true
+    })
+    //but I can change configurable so I'm not sure what the other tutorial was saying...
+    Object.defineProperty(task3, 'toString', {
+      enumerable: true
+    })
+    console.log(Object.keys(task3));
+
+    //inheritance:
+
+    var urgentTask = Object.create(task3);
+    Object.defineProperty(urgentTask, 'toString', {
+      value: function() {
+        console.log(this.title + " is urgent")
+      }
+    })
+    //urgentTask inherited properties from task3 BUT it is a new object and so we can defineProperty after creation but urgentTask has inherited writable: false from task3 so can't reassign again!
+    //get: Uncaught TypeError: Cannot redefine property: toString at Function.defineProperty( < anonymous > )
+    urgentTask.toString();
+
+    // Object.defineProperty(urgentTask, 'toString', {
+    //   value: function() {
+    //     console.log(this.title + " is REALLY urgent")
+    //   }
+    // })
+    //can't change the value... throws an error and stops everything...
+    // urgentTask.toString();
+
+    var mehTask = Object.create(task3);
+    Object.defineProperty(mehTask, 'toString', {
+      value: function() {
+        console.log(this.title + " is not so urgent")
+      },
+      writable: true
+    })
+    mehTask.toString();
+    //change writable back to true when creating mehTask and then can write over the value.
+
+    Object.defineProperty(mehTask, 'toString', {
+      value: function() {
+        console.log(this.title + " can be changed if I deliberately change writable upon creation of mehTask object")
+      },
+      writable: true
+    })
+    mehTask.toString();
+
+
+  //back to urgentTask (same as commented out above)
+    Object.defineProperty(urgentTask, 'toString', {
+      value: function() {
+        console.log(this.title + " is REALLY urgent")
+      }
+    })
+    //can't change the value... throws an error and stops everything...
+    urgentTask.toString();
+  </script>
+
+</body>
+
+</html>
