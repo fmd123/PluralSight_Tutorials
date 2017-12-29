@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>constructor pattern with prototype</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    var Task = function(name){
+      this.name = name;
+      this.completed = false;
+    }
+
+    //basic syntax is:
+    //constructorFnName.prototype.methodName = function(params){...}
+    Task.prototype.completeIt = function(){
+      console.log('Completing task: ' + this.name);
+      this.completed = true;
+    };
+
+    Task.prototype.saveIt = function(){
+      console.log('Saving task: '+ this.name);
+    }
+
+    var task1 = new Task('take a walk');
+    var task2 = new Task('feed dog');
+    var task3 = new Task('fly to moon');
+    var task4 = new Task('draw a picture');
+
+
+    console.log('this is task1: ' + task1);
+    console.log(Task.prototype);
+    console.log(task1.__proto__);
+
+    //you can see that they both point to same thing (Task's prototype)
+
+
+
+
+
+    </script>
+
+  </body>
+</html>
