@@ -5,6 +5,7 @@
     <title>Constructor Pattern</title>
   </head>
   <body>
+    <h1>Open the console to see output</h1>
     <script type="text/javascript">
 
     //basic constructor function invoked with new key word creates instances of task object.
@@ -25,14 +26,15 @@
       var task3 = new Task('fly to moon');
       var task4 = new Task('draw a picture');
 
-      //can see that I have all tasks...
+      //can see that I have now all tasks which are instances of Task.
+      console.log('Can see that I now have all the tasks which are instances of Task: ');
       console.log(task1);
       console.log(task2);
       console.log(task3);
       console.log(task4);
 
       task1.completeIt();
-      console.log('task1 after invoking task1.completeIt(): ', task1);
+      console.log('task1 after invoking task1.completeIt(). completed is now true. ', task1);
 
     </script>
 
