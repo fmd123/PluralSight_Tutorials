@@ -7,8 +7,9 @@ var getDieRoll = function(dieSize){
 
 var roll = getDieRoll(6);
 while(roll<4){
-  roll = getDieRoll(6);
   console.log(roll);
+  roll = getDieRoll(6);
+  
 }
 if(roll >=5){console.log("Nice. You rolled a " + roll)}
 else {console.log("Hmmm "+ roll + " isn't so great!")}
