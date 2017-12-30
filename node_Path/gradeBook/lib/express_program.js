@@ -25,5 +25,6 @@ app.get('/grade', function(req,res){
 
 
 })
+//don't forget to restart server every time you change the code (for now)
 app.listen(3000);
 console.log("server is ready... ")
