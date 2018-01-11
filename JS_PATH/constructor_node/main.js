@@ -1,5 +1,6 @@
 var Task = require('./task')
 
+
 var task1 = new Task('take a walk');
 var task2 = new Task('feed dog');
 var task3 = new Task('fly to moon');
