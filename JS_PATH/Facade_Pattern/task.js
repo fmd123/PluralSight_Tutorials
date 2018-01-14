@@ -52,4 +52,4 @@ TaskServiceWrapper.completeAndNotify(myTask);
 TaskServiceWrapper.completeAndNotify(myBestTask);
 console.log(myTask);
 
-//very cool. :-)
+//very cool. :-) 
